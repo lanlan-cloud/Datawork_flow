@@ -30,14 +30,6 @@ Entorno de desarrollo en la nube que permite trabajar con Python y sus herramien
 
 ## 🚀 Comenzando
 
-### Prueba Gratuita
-
-Accede a nuestra versión básica gratuita con recursos limitados:
-
-1. Visita [https://tudominio.com](https://tudominio.com)
-2. Regístrate con tu email o cuenta de GitHub
-3. Comienza a usar Jupyter y Jupyter Keymap inmediatamente
-
 ### Versión Professional
 
 Desbloquea todo el potencial de DeepSeek Cloud Dev con nuestra versión Pro:
