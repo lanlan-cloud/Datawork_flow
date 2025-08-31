@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepSeek Cloud Dev | Portafolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a2980;
+            --secondary: #26d0ce;
+            --accent: #00ffcc;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #28a745;
+            --pro-gradient: linear-gradient(135deg, #ff6b6b, #ff8e53);
+            --card-bg: rgba(255, 255, 255, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--accent), #fff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .logo-icon {
+            font-size: 28px;
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: var(--transition);
+        }
+        
+        nav a:hover, nav a.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 100px;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--accent), #fff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--primary);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            margin: 5px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-pro {
+            background: var(--pro-gradient);
+            color: white;
+        }
+        
+        /* Resources Section */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            padding-top: 30px;
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+        
+        .resource-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .resource-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .resource-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        
+        .pro-badge {
+            background: var(--pro-gradient);
+            color: white;
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        
+        .resource-provider {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 15px;
+        }
+        
+        .rating {
+            color: #ffcc00;
+            margin-bottom: 15px;
+        }
+        
+        .resource-description {
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .resource-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .action-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--light);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .action-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 80px 0;
+            margin: 60px 0;
+        }
+        
+        .pricing-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .pricing-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            width: 300px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .pricing-card.pro {
+            border: 2px solid #ff6b6b;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.pro:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 20px 0;
+            color: var(--accent);
+        }
+        
+        .pro .price {
+            background: var(--pro-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .features-list {
+            list-style: none;
+            text-align: left;
+            margin: 20px 0;
+        }
+        
+        .features-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .features-list i {
+            color: var(--accent);
+        }
+        
+        .pro .features-list i {
+            color: #ff6b6b;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 40px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            color: var(--light);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: var(--primary);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            border: 2px solid var(--accent);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--light);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                gap: 10px;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .pricing-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .pricing-card.pro {
+                transform: none;
+                margin: 20px 0;
+            }
+            
+            .pricing-card.pro:hover {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-cloud-code logo-icon"></i>
+                    <h1>DeepSeek Cloud Dev</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#inicio" class="active">Inicio</a></li>
+                        <li><a href="#recursos">Recursos</a></li>
+                        <li><a href="#precios">Precios</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <section id="inicio" class="hero">
+        <div class="container">
+            <h2>Desarrollo en la Nube sin Límites</h2>
+            <p>Potencia tu flujo de trabajo con nuestro entorno de desarrollo en la nube. Accede a tus herramientas favoritas desde cualquier dispositivo, sin necesidad de configuración o instalación.</p>
+            <a href="#recursos" class="btn">Explorar Recursos</a>
+            <a href="#precios" class="btn btn-pro">Obtener Versión Pro</a>
+        </div>
+    </section>
+    
+    <section id="recursos">
+        <div class="container">
+            <h2 class="section-title">Recursos Disponibles</h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-title">Python</div>
+                        <div class="pro-badge">PRO</div>
+                    </div>
+                    <div class="resource-provider">
+                        <i class="fab fa-microsoft"></i>
+                        <span>Microsoft · microsoft.com</span>
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="resource-description">Lenguaje de programación con soporte completo en la nube. Ejecuta, depura y despliega código Python desde cualquier dispositivo.</p>
+                    <div class="resource-actions">
+                        <button class="action-btn">Ver Detalles</button>
+                        <button class="action-btn">Probar Básico</button>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-title">Pylance</div>
+                        <div class="pro-badge">PRO</div>
+                    </div>
+                    <div class="resource-provider">
+                        <i class="fab fa-microsoft"></i>
+                        <span>Microsoft · microsoft.com</span>
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="resource-description">Motor de lenguaje para Python que proporciona completado de código inteligente, análisis y sugerencias contextuales.</p>
+                    <div class="resource-actions">
+                        <button class="action-btn">Ver Detalles</button>
+                        <button class="action-btn">Probar Básico</button>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-title">Jupyter</div>
+                    </div>
+                    <div class="resource-provider">
+                        <i class="fab fa-microsoft"></i>
+                        <span>Microsoft · microsoft.com</span>
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="resource-description">Cuadernos interactivos para Python con visualización de datos en tiempo real. Ideal para ciencia de datos y aprendizaje.</p>
+                    <div class="resource-actions">
+                        <button class="action-btn">Ver Detalles</button>
+                        <button class="action-btn">Usar Gratis</button>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-title">Python Debugger</div>
+                        <div class="pro-badge">PRO</div>
+                    </div>
+                    <div class="resource-provider">
+                        <i class="fab fa-microsoft"></i>
+                        <span>Microsoft · microsoft.com</span>
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="resource-description">Depura tu código Python en la nube con puntos de interrupción, inspección de variables y ejecución paso a paso.</p>
+                    <div class="resource-actions">
+                        <button class="action-btn">Ver Detalles</button>
+                        <button class="action-btn">Probar Básico</button>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-title">C/C++</div>
+                        <div class="pro-badge">PRO</div>
+                    </div>
+                    <div class="resource-provider">
+                        <i class="fab fa-microsoft"></i>
+                        <span>Microsoft · microsoft.com</span>
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="resource-description">Soporte completo para C/C++ en la nube con compilación remota, depuración avanzada y profiling integrado.</p>
+                    <div class="resource-actions">
+                        <button class="action-btn">Ver Detalles</button>
+                        <button class="action-btn">Probar Básico</button>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-title">Jupyter Keymap</div>
+                    </div>
+                    <div class="resource-provider">
+                        <i class="fab fa-microsoft"></i>
+                        <span>Microsoft · microsoft.com</span>
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="resource-description">Atajos de teclado familiares para usuarios de Jupyter Notebook. Mejora tu productividad con shortcuts optimizados.</p>
+                    <div class="resource-actions">
+                        <button class="action-btn">Ver Detalles</button>
+                        <button class="action-btn">Usar Gratis</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="precios" class="pricing">
+        <div class="container">
+            <h2 class="section-title">Planes de Precios</h2>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Básico</h3>
+                    <div class="price">Gratis</div>
+                    <p>Ideal para estudiantes y principiantes</p>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Acceso a Jupyter Notebooks</li>
+                        <li><i class="fas fa-check"></i> Jupyter Keymap básico</li>
+                        <li><i class="fas fa-check"></i> 5 horas de uso/mes</li>
+                        <li><i class="fas fa-times"></i> Recursos Pro</li>
+                        <li><i class="fas fa-times"></i> Soporte prioritario</li>
+                    </ul>
+                    <a href="#" class="btn">Comenzar Gratis</a>
+                </div>
+                
+                <div class="pricing-card pro">
+                    <h3>Profesional</h3>
+                    <div class="price">$19/mes</div>
+                    <p>Para desarrolladores y equipos profesionales</p>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Todos los recursos Basic</li>
+                        <li><i class="fas fa-check"></i> Acceso completo a Python Pro</li>
+                        <li><i class="fas fa-check"></i> Pylance avanzado</li>
+                        <li><i class="fas fa-check"></i> Debugger profesional</li>
+                        <li><i class="fas fa-check"></i> Soporte prioritario 24/7</li>
+                        <li><i class="fas fa-check"></i> 50 horas de uso/mes</li>
+                    </ul>
+                    <a href="#" class="btn btn-pro" id="buy-pro-btn">Comprar Ahora</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Empresas</h3>
+                    <div class="price">Personalizado</div>
+                    <p>Para organizaciones con necesidades específicas</p>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Todos los features Pro</li>
+                        <li><i class="fas fa-check"></i> Cuentas ilimitadas</li>
+                        <li><i class="fas fa-check"></i> Uso ilimitado</li>
+                        <li><i class="fas fa-check"></i> Personalización</li>
+                        <li><i class="fas fa-check"></i> Soporte dedicado</li>
+                        <li><i class="fas fa-check"></i> On-premise options</li>
+                    </ul>
+                    <a href="#contacto" class="btn">Contactar Ventas</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer id="contacto">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-cloud-code logo-icon"></i>
+                <h1>DeepSeek Cloud Dev</h1>
+            </div>
+            <p>Desarrollo en la nube para todos. Rompiendo barreras, creando posibilidades.</p>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-product-hunt"></i></a>
+            </div>
+            
+            <p>© 2023 DeepSeek Cloud Dev. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Modal de compra -->
+    <div class="modal" id="purchase-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Adquirir Versión Pro</h2>
+            <p>Estás a punto de adquirir la versión Professional de DeepSeek Cloud Dev</p>
+            <p><strong>Precio: $19/mes</strong></p>
+            
+            <form id="purchase-form">
+                <div style="text-align: left; margin: 20px 0;">
+                    <div style="margin-bottom: 15px;">
+                        <label for="email">Correo electrónico:</label>
+                        <input type="email" id="email" required style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc; margin-top: 5px;">
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label for="card">Datos de pago:</label>
+                        <input type="text" id="card" placeholder="Número de tarjeta" required style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc; margin-top: 5px;">
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-pro">Completar Compra</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Update active class
+                document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+        
+        // Basic interactivity for buttons
+        document.querySelectorAll('.action-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const resource = this.closest('.resource-card').querySelector('.resource-title').textContent;
+                
+                if (this.textContent.includes('Probar')) {
+                    if (this.textContent.includes('Básico')) {
+                        alert(`Iniciando versión de prueba básica de ${resource}...`);
+                    } else {
+                        alert(`Iniciando ${resource}...`);
+                    }
+                } else {
+                    alert(`Mostrando detalles de ${resource}...`);
+                }
+            });
+        });
+        
+        // Modal functionality
+        const modal = document.getElementById('purchase-modal');
+        const buyBtn = document.getElementById('buy-pro-btn');
+        const closeModal = document.querySelector('.close-modal');
+        
+        buyBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            modal.style.display = 'flex';
+        });
+        
+        closeModal.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+        
+        // Purchase form
+        document.getElementById('purchase-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por tu compra! La versión Pro se activará en tu cuenta shortly.');
+            modal.style.display = 'none';
+        });
+        
+        // Pricing buttons
+        document.querySelectorAll('.pricing-card .btn').forEach(button => {
+            if (!button.id) {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const plan = this.closest('.pricing-card').querySelector('h3').textContent;
+                    alert(`Redirigiendo a proceso de compra para el plan: ${plan}`);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
